@@ -1,12 +1,12 @@
 <div class="posts">
   <% 3.times.each do |i| %>
     <% post = @posts[i] %>
-    <div class="post <%= post.nil? ? 'empty' : '' %>">
+    <div class="post <%= (post.nil? or post.empty?) ? 'empty' : '' %>" data-url="<%= post.nil? ? "" : post["permalink"] %>">
       <div class="overlay">
         <i class="fa fa-plus-circle"></i>
         <i class="fa fa-pencil-square-o"></i>
         <form action="#" class="url_box">
-          <input type="text" class="url" />
+          <input type="text" class="url" value="<%= (post.nil? or post.empty?) ? "" : post["permalink"] %>" />
           <div class="buttons">
             <button class="submit" type="submit" value="submit">OK</button>
             <a href="#" class="cancel">Cancel</a>
@@ -14,13 +14,19 @@
         </form>
       </div>
       <div class="content">
-        <% unless post.nil? %>
+        <% unless post.nil? or post.empty? %>
           <%= link_to image_tag(post["leftOfHeadline"]["src"]), post["permalink"] %>
-          <%= link_to content_tag(:h3, post["headline"]), post["permalink"] %>
+          <%= link_to content_tag(:h3, raw(post["headline"])), post["permalink"] %>
+        <% else post.nil? %>
+          <%= link_to image_tag(""), "" %>
+          <%= link_to content_tag(:h3, ""), "" %>
         <% end %>
       </div>
     </div>
   <% end %>
+  <br clear="all">
+  <button class="save_page">Update your top stories</button>
+  <div class="message"></message>
 </div>
 
 <%# <% @posts.each do |post| %>

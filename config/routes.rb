@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'posts/index'
 
-  get 'posts/show'
+  get 'posts' => 'posts#show'
+  post 'posts' => 'posts#create'
 
   root 'pages#welcome'
   get 'logout' => 'users#logout', as: :user_logout

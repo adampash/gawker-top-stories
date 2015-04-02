@@ -11,7 +11,7 @@ module ApplicationHelper
   }
 
   def site_header(site)
-    raw "<h1 class=\"site\">#{ PAIRS[site] } Front Page</h1>"
+    raw "<h1 class=\"site\">#{ PAIRS[site] } Top Stories</h1>"
   end
 
 end

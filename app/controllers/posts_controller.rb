@@ -3,12 +3,20 @@ require 'post_fetcher'
 class PostsController < ApplicationController
   def index
     links = FrontPage.latest(params[:site])
-    links[0] = "http://phasezero.gawker.com/oigan-nsa-estamos-aqui-mismo-hijos-de-puta-1694745140/"
     @posts = PostFetcher.get_posts(links)
   end
 
   def show
-    link = "http://phasezero.gawker.com/oigan-nsa-estamos-aqui-mismo-hijos-de-puta-1694745140/"
-    @post = PostFetcher.get_post(link)
+    @post = PostFetcher.get_post(params[:url])
+  end
+
+  def create
+    FrontPage.create(
+      first: params[:first],
+      second: params[:second],
+      third: params[:third],
+      site: current_user.site,
+    )
+    render json: {success: true}
   end
 end
