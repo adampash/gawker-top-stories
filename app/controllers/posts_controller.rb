@@ -20,6 +20,7 @@ class PostsController < ApplicationController
       second: params[:second],
       third: params[:third],
       site: current_user.site,
+      user_id: current_user.id,
     )
     render json: {success: true}
   end
