@@ -3,6 +3,9 @@ require 'post_fetcher'
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:get_links]
   def index
+    unless current_user.site == params[:site]
+      redirect_to dashboard_path(current_user.site)
+    end
     links = FrontPage.latest(params[:site])
     @posts = PostFetcher.get_posts(links)
   end
