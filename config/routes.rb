@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'posts/index'
 
+  get 'links/:site' => 'posts#get_links'
   get 'posts' => 'posts#show'
   post 'posts' => 'posts#create'
 

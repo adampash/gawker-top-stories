@@ -19,4 +19,9 @@ class PostsController < ApplicationController
     )
     render json: {success: true}
   end
+
+  def get_links
+    @links = FrontPage.latest(params[:site])
+    render json: @links.to_json
+  end
 end
