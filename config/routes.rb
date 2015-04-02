@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get 'posts/show'
 
   root 'pages#welcome'
-  get 'front' => 'posts#index', as: :dashboard
   get 'logout' => 'users#logout', as: :user_logout
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  get ':site' => 'posts#index', as: :dashboard
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
