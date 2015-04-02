@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+
+  get 'posts/show'
+
   root 'pages#welcome'
-  get 'front' => 'pages#front', as: :dashboard
+  get 'front' => 'posts#index', as: :dashboard
   get 'logout' => 'users#logout', as: :user_logout
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 

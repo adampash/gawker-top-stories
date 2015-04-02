@@ -52,6 +52,7 @@ group :production do
 end
 
 gem 'puma'
+gem 'kinja'
 gem "font-awesome-rails"
 group :development, :test do
   gem 'rspec-rails'
