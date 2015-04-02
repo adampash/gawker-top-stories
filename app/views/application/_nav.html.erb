@@ -1,0 +1,20 @@
+<nav>
+  <i class="fa fa-bars fa-lg menu"></i>
+  <!-- <ul class="dropdown"> -->
+  <!--   <% if user_signed_in? %> -->
+  <!--     <%= link_to raw("<li>Dashboard</li>"), dashboard_path %> -->
+  <!--     <%# <% if current_user.politburo? %> -->
+  <!--       <%# <%= render_sites %> -->
+  <!--     <%# <% else %> -->
+  <!--       <%# <%= render_site(current_user.domain.split('.')[0]) %> -->
+  <!--       <%# <% if current_user.site_owner %> -->
+  <!--         <%# <%= render_report_link(current_user.domain.split('.')[0]) %> -->
+  <!--       <% end %> -->
+  <!--     <%# <% end %> -->
+  <!--     <%# <%= link_to(raw("<li>Admin</li>"), "/admin") if current_user.admin? %> -->
+  <!--     <%# <%= link_to raw("<li>Getting started</li>"), setup_path %> -->
+  <!--     <%= link_to raw("<li>Logout</li>"), "/logout" %> -->
+  <!--   <%# <% end %> -->
+  <!-- </ul> -->
+  <%= site_header(current_user.site) %>
+</nav>
