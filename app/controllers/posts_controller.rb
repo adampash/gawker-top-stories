@@ -1,6 +1,7 @@
 require 'post_fetcher'
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:get_links]
   def index
     links = FrontPage.latest(params[:site])
     @posts = PostFetcher.get_posts(links)
