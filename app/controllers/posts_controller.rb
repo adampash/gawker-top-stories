@@ -3,7 +3,7 @@ require 'post_fetcher'
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:get_links]
   def index
-    unless current_user.site == params[:site]
+    unless current_user.site == params[:site] or current_user.admin?
       redirect_to dashboard_path(current_user.site)
     end
     links = FrontPage.latest(params[:site])
