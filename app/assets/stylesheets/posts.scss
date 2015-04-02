@@ -1,3 +1,102 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.posts {
+  margin-top: 50px;
+  .post {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 300px;
+    height: 290px;
+    background: #eee;
+    display: inline-block;
+    margin-right: 15px;
+    cursor: pointer;
+    .overlay {
+      // background: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    i.fa {
+      padding-top: 95px;
+      display: none;
+      font-size: 80px;
+      color: #ddd;
+    }
+    .url_box {
+      display: none;
+      padding-top: 95px;
+      padding: 20px;
+      height: 100%;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.5);
+      input.url {
+        width: 100%;
+        font-size: 20px;
+        display: block;
+        padding: 10px;
+      }
+      .buttons {
+        margin-top: 10px;
+        button {
+          padding: 10px;
+          background: #aaa;
+          outline: none;
+          border: none;
+          cursor: pointer;
+        }
+        button.submit {
+          float: right;
+          color: white;
+          width: 80px;
+          &:hover {
+            background: #ccc;
+          }
+        }
+        a {
+          color: white;
+          padding: 10px;
+          float: right;
+        }
+      }
+    }
+    &:hover {
+      i.fa {
+        color: #ccc;
+        &.fa-pencil-square-o {
+          display: inline-block;
+        }
+      }
+    }
+    &.editing {
+      i.fa.fa-plus-circle, i.fa.fa-pencil-square-o {
+        display: none;
+      }
+    }
+    &.empty {
+      img, h2 {
+        display: none;
+      }
+      i.fa-plus-circle {
+        display: inline-block;
+      }
+      &:hover {
+        i.fa-plus-circle {
+          color: #ccc;
+        }
+        i.fa-pencil-square-o {
+          display: none;
+        }
+      }
+    }
+    img {
+      width: 100%;
+      height: 180px;
+    }
+  }
+}

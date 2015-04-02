@@ -12,3 +12,12 @@ html {
 a {
   text-decoration: none;
 }
+
+.container {
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+input:focus {
+  outline: none;
+}
