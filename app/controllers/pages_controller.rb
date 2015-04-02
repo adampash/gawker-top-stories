@@ -3,7 +3,7 @@ require 'post_fetcher'
 class PagesController < ApplicationController
   before_action :authenticate_user!, except: :welcome
   def welcome
-    redirect_to dashboard_path if user_signed_in?
+    redirect_to dashboard_path(current_user.site) if user_signed_in?
   end
 
   def front

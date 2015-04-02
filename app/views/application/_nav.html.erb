@@ -16,5 +16,5 @@
   <!--     <%= link_to raw("<li>Logout</li>"), "/logout" %> -->
   <!--   <%# <% end %> -->
   <!-- </ul> -->
-  <%= site_header(current_user.site) %>
+  <%= site_header(user_signed_in? ? current_user.site : "Top Stories") %>
 </nav>
