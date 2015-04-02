@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'links/:site' => 'posts#get_links'
   get 'posts' => 'posts#show'
   post 'posts' => 'posts#create'
+  get 'users/sign_in' => 'users#sign_in'
 
   root 'pages#welcome'
   get 'logout' => 'users#logout', as: :user_logout
