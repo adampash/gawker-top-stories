@@ -54,6 +54,7 @@ end
 gem 'puma'
 gem 'kinja'
 gem "font-awesome-rails"
+gem 'jquery-ui-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'

@@ -5,6 +5,12 @@
 $ ->
   decode = (text) -> $('<textarea />').html(text).text()
   urls = $('.post').map -> $(@).data('url')
+
+  $('.posts').sortable
+    cursor: 'move'
+    change: -> $('.save_page').css(display: 'block')
+    items: "> div.post"
+
   $('.post').on 'click', ->
     $(@).addClass 'editing'
     $(@).find('.url_box').show().find('.url').select()

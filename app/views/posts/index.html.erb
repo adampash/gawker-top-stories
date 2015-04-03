@@ -1,4 +1,5 @@
 <div class="posts">
+  <h4>Click to change stories. Drag and drop to reorder.</h4>
   <% 3.times.each do |i| %>
     <% post = @posts[i] %>
     <div class="post <%= (post.nil? or post.empty?) ? 'empty' : '' %>" data-url="<%= post.nil? ? "" : post["permalink"] %>">
@@ -25,6 +26,6 @@
     </div>
   <% end %>
   <br clear="all">
-  <button class="save_page">Update your top stories</button>
+  <button class="save_page">Save your new top stories</button>
   <div class="message"></message>
 </div>

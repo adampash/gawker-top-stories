@@ -5,6 +5,10 @@
 .posts {
   margin-top: 50px;
   width: 100%;
+  display: block;
+  h4 {
+    margin-bottom: 20px;
+  }
   .post {
     float: left;
     position: relative;
@@ -22,6 +26,14 @@
       bottom: 0;
       left: 0;
       right: 0;
+      .order {
+        position: absolute;
+        bottom: 10px;
+        display: none;
+        width: 100%;
+        text-align: center;
+        height: 80px;
+      }
     }
     i.fa {
       padding-top: 95px;
@@ -78,9 +90,20 @@
           padding: 0;
           color: black;
         }
+        &.fa-square {
+          padding-top: 0;
+          display: inline;
+          margin: 3px;
+          &:hover {
+            color: #666;
+          }
+        }
       }
     }
     &.editing {
+      .order {
+        display: block;
+      }
       i.fa.fa-plus-circle, i.fa.fa-pencil-square-o {
         display: none;
       }
