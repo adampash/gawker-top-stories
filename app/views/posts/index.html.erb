@@ -6,7 +6,7 @@
         <i class="fa fa-plus-circle"></i>
         <i class="fa fa-pencil-square-o"></i>
         <form action="#" class="url_box">
-          <input type="text" class="url" value="<%= (post.nil? or post.empty?) ? "" : post["permalink"] %>" />
+          <input placeholder="Paste a link to a post" type="text" class="url" value="<%= (post.nil? or post.empty?) ? "" : post["permalink"] %>" />
           <div class="buttons">
             <button class="submit" type="submit" value="submit">OK</button>
             <a href="#" class="cancel">Cancel</a>
