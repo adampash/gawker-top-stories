@@ -28,6 +28,7 @@
     `<div>
       <Builder posts={this.state.stories}
         handleUpdate={this.updateStories}
+        site={this.props.site}
       />
       <div className="preview">
         <div className="center">

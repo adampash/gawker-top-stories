@@ -40,6 +40,7 @@
       first: ids[order[0]]
       second: ids[order[1]]
       third: ids[order[2]]
+      site: @props.site
     $.ajax
       method: "POST"
       dataType: 'json'
