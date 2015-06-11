@@ -3,6 +3,7 @@
     changed: false
     message: ''
     order: [0,1,2]
+    posts: @props.posts
   getDefaultProps: ->
     posts: [null, null, null]
   componentDidMount: ->
@@ -17,18 +18,23 @@
       items: "> div.post"
 
   handleChange: (newPost, oldPost) ->
-    posts = @props.posts
+    posts = @state.posts
+    posts = _.compact(posts)
     for post, index in posts
       if post is oldPost
         posts[index] = newPost
         break
+    unless newPost in posts
+      posts.push newPost
+    posts.push(null) until posts.length > 2
+    console.log posts
     @setState
       changed: true
       posts: posts
 
   saveStories: (e) ->
     e.preventDefault()
-    ids = @props.posts.map (post) -> post?.id
+    ids = @state.posts.map (post) -> post?.id
     order = @state.order
     params =
       first: ids[order[0]]
@@ -48,7 +54,7 @@
           @setState
             message: ''
         , 5000
-        posts = @props.posts
+        posts = @state.posts
         @props.handleUpdate [
           posts[order[0]]
           posts[order[1]]
@@ -63,7 +69,7 @@
     if @props.posts.length is 0
       all_posts = [0,1,2]
     else
-      all_posts = @props.posts
+      all_posts = @state.posts
     # posts = [0,1,2].map (index) =>
     posts = []
     for post, index in all_posts

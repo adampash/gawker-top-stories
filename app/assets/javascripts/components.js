@@ -1,3 +1,4 @@
+//= require underscore
 //= require ./components/header
 //= require ./components/hoverable
 //= require ./components/marquee

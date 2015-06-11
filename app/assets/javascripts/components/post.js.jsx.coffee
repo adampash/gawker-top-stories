@@ -17,7 +17,9 @@
 
   saveDeck: (e) ->
     e.stopPropagation()
+    e.preventDefault()
     deck = React.findDOMNode(@refs.deck).value
+    console.log @props.post.headline
     $.ajax
       url: '/update_deck'
       data:
@@ -38,8 +40,9 @@
     e.stopPropagation()
     e.preventDefault()
 
-  fetchPost: ->
+  fetchPost: (e) ->
     url = React.findDOMNode(@refs.url_box).value
+    e.preventDefault()
     @setState
       editing: false
     # post_container = $(@).parents('.post')

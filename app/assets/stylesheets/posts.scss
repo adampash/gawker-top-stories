@@ -123,7 +123,7 @@
       }
     }
     &.empty {
-      img, h2 {
+      img, h2, .deck {
         display: none;
       }
       i.fa-plus-circle {
