@@ -3,6 +3,8 @@
     changed: false
     message: ''
     order: [0,1,2]
+  getDefaultProps: ->
+    posts: [null, null, null]
   componentDidMount: ->
     $('.posts').sortable
       cursor: 'move'
@@ -58,9 +60,13 @@
     #     $('.message').text("Something went wrong updating your top stories")
 
   render: ->
+    if @props.posts.length is 0
+      all_posts = [0,1,2]
+    else
+      all_posts = @props.posts
     # posts = [0,1,2].map (index) =>
     posts = []
-    for post, index in @props.posts
+    for post, index in all_posts
       posts.push `<Post key={index}
         position={this.state.order[index]}
         post={post}

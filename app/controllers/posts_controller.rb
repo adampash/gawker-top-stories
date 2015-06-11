@@ -8,10 +8,13 @@ class PostsController < ApplicationController
     end
     post_ids = FrontPage.latest(params[:site])
     @posts = post_ids.map do |post_id|
-      Post.find(post_id.to_i)
+      if post_id.nil?
+        nil
+      else
+        Post.find(post_id.to_i)
+      end
     end
     @posts
-    # @posts = PostFetcher.get_posts(links)
   end
 
   def show

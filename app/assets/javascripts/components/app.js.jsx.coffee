@@ -1,6 +1,10 @@
 @App = React.createClass
   getInitialState: ->
-    stories: @props.stories
+    if @props.stories?
+      stories = @props.stories
+    else
+      stories = [0,1,2]
+    return stories: stories
 
   updateStories: (stories) ->
     @reload()

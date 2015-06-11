@@ -63,7 +63,7 @@
     deck = post?.deck or ''
     img = post?.image?.src or ''
     permalink = post?.permalink or ''
-    unless post?
+    unless typeof(post) is 'object'
       postClasses.push 'empty'
     if @state.editing
       postClasses.push 'editing'
@@ -87,9 +87,7 @@
             <textarea ref="deck"
               onClick={this.handleChange}
               onChange={this.handleChange}
-            >
-              {deck}
-            </textarea>
+              defaultValue={deck} />
             <button disabled={this.state.deckEdit ? '' : 'disabled'}
               onClick={this.saveDeck}
             >
