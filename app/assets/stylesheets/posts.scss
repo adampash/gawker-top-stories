@@ -42,7 +42,6 @@
       color: #ddd;
     }
     .url_box {
-      display: none;
       padding-top: 95px;
       padding: 20px;
       height: 100%;
@@ -156,4 +155,9 @@
 }
 a {
   color: black;
+}
+
+.preview {
+  width: 100%;
+  margin: 20px auto 50px;
 }

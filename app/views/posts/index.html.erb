@@ -6,7 +6,7 @@
       <div class="overlay">
         <i class="fa fa-plus-circle"></i>
         <i class="fa fa-pencil-square-o"></i>
-        <form action="#" class="url_box">
+        <form action="#" class="url_box hide">
           <input placeholder="Paste a link to a post" type="text" class="url" value="<%= (post.nil? or post.empty?) ? "" : post["permalink"] %>" />
           <div class="buttons">
             <button class="submit" type="submit" value="submit">OK</button>
@@ -27,5 +27,22 @@
   <% end %>
   <br clear="all">
   <button class="save_page">Save your new top stories</button>
-  <div class="message"></message>
+  <div class="message"></div>
+</div>
+
+  <%= react_component(
+    'Builder',
+    {
+      posts: @posts
+    },
+  ) %>
+  <br clear="all" />
+<div class="preview">
+  <%= react_component(
+    'Main',
+    {
+      stories: @posts
+    },
+    {prerender: true}
+  ) %>
 </div>
