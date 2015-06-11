@@ -65,6 +65,8 @@
         </div>
         <div className="content">
           <img src={img} />
-          <h3>{headline}</h3>
+          <h3
+            dangerouslySetInnerHTML={{__html: headline}}
+          />
         </div>
       </div>`

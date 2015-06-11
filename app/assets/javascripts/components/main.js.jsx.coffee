@@ -1,28 +1,19 @@
-# TimerMixin = require 'react-timer-mixin'
-# Marquee = require './marquee'
-# Hoverable = require './hoverable'
-# Header = require './header'
-# Data = require './data'
-
 @Main = React.createClass
-  # mixins: [TimerMixin]
   displayName: 'Main'
   getInitialState: ->
     activeStoryId: @props.stories[0]?.id
     activeStory: 0
-    stories: @props.stories
     hovering: false
-    # images: Data.stories.map (story) -> story.img
 
   cycle: ->
     unless @state.hovering
-      if @state.activeStory is @state.stories.length - 1
+      if @state.activeStory is @props.stories.length - 1
         activeStory = 0
       else
         activeStory = @state.activeStory + 1
       @setState
         activeStory: activeStory
-        activeStoryId: @state.stories[activeStory].id
+        activeStoryId: @props.stories[activeStory].id
 
   getImage: (index) ->
     return '' unless @props.stories[index]?
@@ -46,7 +37,7 @@
       hovering: false
 
   render: ->
-    links = @state.stories.map (story, index) =>
+    links = @props.stories.map (story, index) =>
       return `<div />` unless story?
       `<Hoverable
         hoverCallback={_this.hoverCallback}
@@ -60,7 +51,7 @@
     return `<div className="container" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} >
             <Header text="Kotaku Covers E3" url="http://kotaku.com/tag/e3" />
             <Marquee
-              story={this.state.stories[this.state.activeStory]}
+              story={this.props.stories[this.state.activeStory]}
               img={this.getImage(this.state.activeStory)}
             />
             <div className="links">

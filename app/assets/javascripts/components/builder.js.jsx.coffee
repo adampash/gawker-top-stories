@@ -1,7 +1,6 @@
 @Builder = React.createClass
   getInitialState: ->
     changed: false
-    posts: @props.posts
     message: ''
     order: [0,1,2]
   componentDidMount: ->
@@ -16,7 +15,7 @@
       items: "> div.post"
 
   handleChange: (newPost, oldPost) ->
-    posts = @state.posts
+    posts = @props.posts
     for post, index in posts
       if post is oldPost
         posts[index] = newPost
@@ -26,7 +25,7 @@
       posts: posts
 
   saveStories: ->
-    urls = @state.posts.map (post) -> post?.permalink
+    urls = @props.posts.map (post) -> post?.permalink
     order = @state.order
     params =
       first: urls[order[0]]
@@ -41,10 +40,17 @@
         @setState
           changed: false
           message: "Top stories updated"
+          order: [0,1,2]
         setTimeout =>
           @setState
             message: ''
         , 5000
+        posts = @props.posts
+        @props.handleUpdate [
+          posts[order[0]]
+          posts[order[1]]
+          posts[order[2]]
+        ]
       error: =>
         @setState
           message: ''
@@ -53,19 +59,19 @@
   render: ->
     # posts = [0,1,2].map (index) =>
     posts = []
-    for post, index in @state.posts
-      posts.push `<Post key={index} position={index} post={post} handleChange={this.handleChange} />`
+    for post, index in @props.posts
+      posts.push `<Post key={index} position={this.state.order[index]} post={post} handleChange={this.handleChange} />`
     return `<div className="posts">
         <h4>Click to change stories. Drag and drop to reorder.</h4>
         {posts}
 
-        <br clear="all" />
-
-        <button className={this.state.changed ? 'save_page' : 'save_page hide'}
-          onClick={this.saveStories}
-        >
-          Save your new top stories
-        </button>
-        <div className="message">{this.state.message}</div>
+        <div className="clear">
+          <button className={this.state.changed ? 'save_page' : 'save_page hide'}
+            onClick={this.saveStories}
+          >
+            Save your new top stories
+          </button>
+          <div className="message">{this.state.message}</div>
+        </div>
       </div>
     `
