@@ -57,7 +57,7 @@
         img={story.img}
         active={_this.state.activeStoryId === story.id}
         index={index} />`
-    return `<div className="w_container" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} >
+    return `<div className="container" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} >
             <Header text="Kotaku Covers E3" url="http://kotaku.com/tag/e3" />
             <Marquee
               story={this.state.stories[this.state.activeStory]}

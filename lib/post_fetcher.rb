@@ -10,6 +10,7 @@ module PostFetcher
   def self.get_post(link)
     return nil if link.nil?
     post = kinja.get_post(link)["data"]
+    return nil if post.nil?
     post.slice("headline", "permalink", "leftOfHeadline", "id", "tags")
   end
 

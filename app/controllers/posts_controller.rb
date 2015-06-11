@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def show
     @post = PostFetcher.get_post(params[:url])
+    # require 'pry'; binding.pry if params[:url] == "http://kotaku.com/lego-enchanted-forest-is-like-something-out-of-a-ghibli-1710570117"
   end
 
   def create

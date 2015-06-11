@@ -1,3 +1,5 @@
 json.headline post["headline"]
-json.img post["leftOfHeadline"]["src"]
+json.leftOfHeadline post["leftOfHeadline"]
 json.id post["id"]
+json.tags post["tags"]
+json.permalink post["permalink"]

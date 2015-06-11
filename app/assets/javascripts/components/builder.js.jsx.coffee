@@ -1,13 +1,71 @@
 @Builder = React.createClass
+  getInitialState: ->
+    changed: false
+    posts: @props.posts
+    message: ''
+    order: [0,1,2]
+  componentDidMount: ->
+    $('.posts').sortable
+      cursor: 'move'
+      update: (e) =>
+        order = $('.post', e.target).map (index, post) ->
+          $(post).data('position')
+        @setState
+          changed: true
+          order: order
+      items: "> div.post"
+
+  handleChange: (newPost, oldPost) ->
+    posts = @state.posts
+    for post, index in posts
+      if post is oldPost
+        posts[index] = newPost
+        break
+    @setState
+      changed: true
+      posts: posts
+
+  saveStories: ->
+    urls = @state.posts.map (post) -> post?.permalink
+    order = @state.order
+    params =
+      first: urls[order[0]]
+      second: urls[order[1]]
+      third: urls[order[2]]
+    $.ajax
+      method: "POST"
+      dataType: 'json'
+      url: "/posts"
+      data: params
+      success: (response) =>
+        @setState
+          changed: false
+          message: "Top stories updated"
+        setTimeout =>
+          @setState
+            message: ''
+        , 5000
+      error: =>
+        @setState
+          message: ''
+    #     $('.message').text("Something went wrong updating your top stories")
+
   render: ->
-    posts = [0,1,2].map (index) =>
-      post = @props.posts[index]
-      `<Post post={post} />`
+    # posts = [0,1,2].map (index) =>
+    posts = []
+    for post, index in @state.posts
+      posts.push `<Post key={index} position={index} post={post} handleChange={this.handleChange} />`
     return `<div className="posts">
         <h4>Click to change stories. Drag and drop to reorder.</h4>
         {posts}
+
         <br clear="all" />
-        <button className="save_page">Save your new top stories</button>
-        <div className="message"></div>
+
+        <button className={this.state.changed ? 'save_page' : 'save_page hide'}
+          onClick={this.saveStories}
+        >
+          Save your new top stories
+        </button>
+        <div className="message">{this.state.message}</div>
       </div>
     `

@@ -1,20 +1,23 @@
 @import "base";
 @import "kinja_fonts";
 
-.w_container {
+$yellow: #ffc810;
+$black: #353535;
+
+.container {
   font-family: ProximaNovaCond;
   display: flex;
   flex-direction: column;
   max-width: 636px;
   .header {
-    background: #2a1f1d;
+    background: $black;
     h4 {
       margin: 8px 14px 5px;
       font-weight: normal;
       letter-spacing: 1.5px;
     }
     a {
-      color: #ffc810;
+      color: $yellow;
       text-decoration: none;
       text-transform: uppercase;
     }
@@ -55,6 +58,8 @@
         font-family: Georgia;
         color: black;
         padding: 5px;
+        line-height: 25px;
+        font-size: 17px;
         hr {
           border-bottom: 2px solid black;
           border-style: solid;
@@ -71,7 +76,7 @@
     width: 100%;
     flex-direction: row;
     align-items: stretch;
-    background: #353535;
+    background: $black;
     padding: 0 10px;
     a {
       color: white;
@@ -86,7 +91,10 @@
         h4 {
           margin: 0;
           font-weight: normal;
-          line-height: 20px;
+          line-height: 19px;
+        }
+        &.active h4 {
+          color: $yellow;
         }
       }
       .dot {
@@ -102,9 +110,9 @@
   height: 12px;
   margin: 14px auto 1px;
   border-radius: 6px;
-  border: 2px solid white;
+  border: 2px solid $yellow;
   &.active {
-    background: white;
+    background: $yellow;
   }
 }
 
