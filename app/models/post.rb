@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
     # require 'pry'; binding.pry
     post = find_by(kinja_id: params["id"])
     if post.nil?
-      create(
+      post = create(
         kinja_id: params["id"],
         tags: params["tags"],
         image: params["leftOfHeadline"],
