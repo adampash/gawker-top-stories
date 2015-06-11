@@ -1,8 +1,7 @@
 class FrontPage < ActiveRecord::Base
   belongs_to :user
   def self.latest(site)
-    page = where(site: site).order('created_at DESC').first
-    page.nil? ? [] : page.get_links
+    where(site: site).order('created_at DESC').first
   end
 
   def get_links

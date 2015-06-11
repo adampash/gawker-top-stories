@@ -76,4 +76,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # DNS to CDN to Origin
+  config.action_controller.asset_host = ENV["ASSET_HOST"] # will look like //123abc.cloudfront.net
+  config.assets.compile = false
+  config.assets.digest = true
+  config.assets.js_compressor = :uglifier
+  config.assets.version = ENV["ASSETS_VERSION"]
+  config.static_cache_control = "public, max-age=#{1.year.to_i}"
+
+
+
 end

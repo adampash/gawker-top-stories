@@ -55,6 +55,10 @@ GEM
     coffee-script-source (1.9.1)
     columnize (0.9.0)
     connection_pool (2.2.0)
+    curb (0.8.8)
+    curb-fu (0.6.2)
+      curb (>= 0.5.4.0)
+      rack-test (>= 0.2.0)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -69,6 +73,12 @@ GEM
     execjs (2.4.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    fastly (1.1.5)
+      curb (~> 0.8.6)
+      curb-fu (~> 0.6.2)
+    fastly-rails (0.4.0)
+      fastly (~> 1.1.4)
+      rails
     ffi (1.9.8)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
@@ -274,6 +284,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   dotenv
+  fastly-rails
   font-awesome-rails
   guard-rspec
   jbuilder (~> 2.0)
