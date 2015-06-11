@@ -23,11 +23,14 @@ class PostsController < ApplicationController
   end
 
   def create
+    unless current_user.site == params[:site] or current_user.admin?
+      redirect_to dashboard_path(current_user.site)
+    end
     FrontPage.create(
       first: params[:first],
       second: params[:second],
       third: params[:third],
-      site: current_user.site,
+      site: params[:site],
       user_id: current_user.id,
     )
     render json: {success: true}
