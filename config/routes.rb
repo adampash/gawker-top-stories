@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'posts/index'
-  get 'embed/:site' => 'posts#embed'
+  get ':site/embed' => 'posts#embed'
 
   get 'links/:site' => 'posts#get_links'
   get 'posts' => 'posts#show'
