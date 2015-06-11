@@ -14,7 +14,7 @@
     position: relative;
     text-align: center;
     width: 300px;
-    height: 290px;
+    height: 350px;
     background: #eee;
     display: inline-block;
     margin-right: 15px;
@@ -33,6 +33,21 @@
         width: 100%;
         text-align: center;
         height: 80px;
+      }
+      .deck {
+        position: absolute;
+        bottom: 10px;
+        padding: 0 10px;
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+        textarea {
+          flex: 4 0 0;
+          height: 60px;
+        }
+        button {
+          flex: 1 0 0;
+        }
       }
     }
     i.fa {
@@ -84,7 +99,7 @@
           display: inline-block;
           font-size: 25px;
           position: absolute;
-          bottom: 10px;
+          top: 10px;
           right: 10px;
           padding: 0;
           color: black;

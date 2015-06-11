@@ -1,5 +1,6 @@
-json.headline post["headline"]
-json.leftOfHeadline post["leftOfHeadline"]
-json.id post["id"]
-json.tags post["tags"]
-json.permalink post["permalink"]
+json.headline post.headline
+json.image post.image
+json.id post.id
+json.tags post.tags
+json.permalink post.permalink
+json.deck post.deck

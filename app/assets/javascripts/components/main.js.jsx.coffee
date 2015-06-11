@@ -17,7 +17,7 @@
 
   getImage: (index) ->
     return '' unless @props.stories[index]?
-    img_obj = @props.stories[index].leftOfHeadline
+    img_obj = @props.stories[index].image
     img_url = "http://i.kinja-img.com/gawker-media/image/upload/t_318x318centered/"
     "#{img_url}#{img_obj.id}.#{img_obj.format}"
 

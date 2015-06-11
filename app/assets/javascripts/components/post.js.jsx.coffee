@@ -1,24 +1,44 @@
 @Post = React.createClass
   getInitialState: ->
     editing: false
+    deckEdit: false
     post: @props.post
   handleClick: (e) ->
     @setState
       editing: true
-    console.log 'focus'
     setTimeout =>
       React.findDOMNode(@refs.url_box).select()
     , 100
 
+  handleChange: (e) ->
+    e.stopPropagation()
+    @setState
+      deckEdit: true
+
+  saveDeck: (e) ->
+    e.stopPropagation()
+    deck = React.findDOMNode(@refs.deck).value
+    $.ajax
+      url: '/update_deck'
+      data:
+        id: @props.post.id
+        deck: deck
+      dataType: 'json'
+      method: "POST"
+      success: (post) =>
+        @props.handleUpdate()
+        @setState
+          deckEdit: false
+      error: =>
+
+
   handleCancel: (e) ->
-    console.log 'handle cancel'
     @setState
       editing: false
     e.stopPropagation()
     e.preventDefault()
 
   fetchPost: ->
-    console.log 'fetch post'
     url = React.findDOMNode(@refs.url_box).value
     @setState
       editing: false
@@ -40,7 +60,8 @@
     postClasses = ['post']
     post = @state.post
     headline = post?.headline or ''
-    img = post?.leftOfHeadline?.src or ''
+    deck = post?.deck or ''
+    img = post?.image?.src or ''
     permalink = post?.permalink or ''
     unless post?
       postClasses.push 'empty'
@@ -62,6 +83,19 @@
               <a href="#" className="cancel" onClick={this.handleCancel}>Cancel</a>
             </div>
           </form>
+          <div className="deck">
+            <textarea ref="deck"
+              onClick={this.handleChange}
+              onChange={this.handleChange}
+            >
+              {deck}
+            </textarea>
+            <button disabled={this.state.deckEdit ? '' : 'disabled'}
+              onClick={this.saveDeck}
+            >
+              Save<br />Deck
+            </button>
+          </div>
         </div>
         <div className="content">
           <img src={img} />

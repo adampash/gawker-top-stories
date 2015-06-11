@@ -24,13 +24,14 @@
       changed: true
       posts: posts
 
-  saveStories: ->
-    urls = @props.posts.map (post) -> post?.permalink
+  saveStories: (e) ->
+    e.preventDefault()
+    ids = @props.posts.map (post) -> post?.id
     order = @state.order
     params =
-      first: urls[order[0]]
-      second: urls[order[1]]
-      third: urls[order[2]]
+      first: ids[order[0]]
+      second: ids[order[1]]
+      third: ids[order[2]]
     $.ajax
       method: "POST"
       dataType: 'json'
@@ -60,7 +61,12 @@
     # posts = [0,1,2].map (index) =>
     posts = []
     for post, index in @props.posts
-      posts.push `<Post key={index} position={this.state.order[index]} post={post} handleChange={this.handleChange} />`
+      posts.push `<Post key={index}
+        position={this.state.order[index]}
+        post={post}
+        handleChange={this.handleChange}
+        handleUpdate={this.props.handleUpdate}
+        />`
     return `<div className="posts">
         <h4>Click to change stories. Drag and drop to reorder.</h4>
         {posts}

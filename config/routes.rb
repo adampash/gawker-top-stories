@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   get 'posts/index'
+  get 'embed/:site' => 'posts#embed'
 
   get 'links/:site' => 'posts#get_links'
   get 'posts' => 'posts#show'
   post 'posts' => 'posts#create'
+  post 'update_deck' => 'posts#update_deck'
   get 'users/sign_in' => 'users#sign_in'
 
   root 'pages#welcome'

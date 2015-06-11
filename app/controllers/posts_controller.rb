@@ -6,13 +6,17 @@ class PostsController < ApplicationController
     unless current_user.site == params[:site] or current_user.admin?
       redirect_to dashboard_path(current_user.site)
     end
-    links = FrontPage.latest(params[:site])
-    @posts = PostFetcher.get_posts(links)
+    post_ids = FrontPage.latest(params[:site])
+    @posts = post_ids.map do |post_id|
+      Post.find(post_id.to_i)
+    end
+    @posts
+    # @posts = PostFetcher.get_posts(links)
   end
 
   def show
-    @post = PostFetcher.get_post(params[:url])
-    # require 'pry'; binding.pry if params[:url] == "http://kotaku.com/lego-enchanted-forest-is-like-something-out-of-a-ghibli-1710570117"
+    post = PostFetcher.get_post(params[:url])
+    @post = Post.find_or_create(post)
   end
 
   def create
@@ -26,8 +30,23 @@ class PostsController < ApplicationController
     render json: {success: true}
   end
 
+  def update_deck
+    @post = Post.find(params[:id])
+    @post.update_attributes deck: params[:deck]
+    @post
+  end
+
   def get_links
     @links = FrontPage.latest(params[:site])
     render json: @links.to_json
+  end
+
+  def embed
+    post_ids = FrontPage.latest(params[:site])
+    @posts = post_ids.map do |post_id|
+      Post.find(post_id.to_i)
+    end
+    @posts
+    render layout: 'embed'
   end
 end
