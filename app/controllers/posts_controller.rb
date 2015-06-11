@@ -3,7 +3,7 @@ require 'post_fetcher'
 class PostsController < ApplicationController
   before_filter :set_cache_control_headers, only: [:embed]
 
-  before_action :authenticate_user!, except: [:get_links]
+  before_action :authenticate_user!, except: [:get_links, :embed]
   def index
     unless current_user.site == params[:site] or current_user.admin?
       redirect_to dashboard_path(current_user.site)
