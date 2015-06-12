@@ -36,11 +36,15 @@
     "#{img_url}#{img_obj.id}.#{img_obj.format}"
 
   componentDidMount: ->
+    window.addEventListener('resize', @resize)
     setInterval @cycle, 7000
     @resize()
     setTimeout =>
       @resize()
     , 100
+
+  componentWillUnmount: ->
+    window.removeEventListener('resize', @resize)
 
   hoverCallback: (storyId, storyIndex) ->
     @setState
