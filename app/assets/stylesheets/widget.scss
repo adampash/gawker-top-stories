@@ -19,7 +19,7 @@ $mobile: 500px;
     h4 {
       @include breakpoint(max-width $mobile) {
         margin: 0;
-        padding: 10px 5px;
+        padding: 10px;
       }
       margin: 8px 14px 5px;
       font-weight: normal;
