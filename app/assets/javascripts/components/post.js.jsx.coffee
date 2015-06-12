@@ -66,8 +66,7 @@
     deck = post?.deck or ''
     img = post?.image?.src or ''
     permalink = post?.permalink or ''
-    unless typeof(post) is 'object'
-      postClasses.push 'empty'
+    postClasses.push 'empty' unless post?
     if @state.editing
       postClasses.push 'editing'
     `<div className={postClasses.join(' ')}
