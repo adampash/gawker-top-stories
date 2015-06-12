@@ -5,7 +5,20 @@
     activeStory: 0
     hovering: false
 
+  resize: ->
+    # console.log 'RESIZE!!!'
+    height = $('.container').height()
+    window.top.postMessage(
+      JSON.stringify(
+        kinja:
+          sourceUrl: window.location.href
+          resizeFrame:
+            height: height
+      ), '*'
+    )
+
   cycle: ->
+    @resize()
     unless @state.hovering
       if @state.activeStory is @props.stories.length - 1
         activeStory = 0
@@ -23,6 +36,10 @@
 
   componentDidMount: ->
     setInterval @cycle, 7000
+    @resize()
+    setTimeout =>
+      @resize()
+    , 100
 
   hoverCallback: (storyId, storyIndex) ->
     @setState

@@ -2,6 +2,7 @@ require 'post_fetcher'
 
 class PostsController < ApplicationController
   before_filter :set_cache_control_headers, only: [:embed]
+  after_action :allow_iframe, only: :embed
 
   before_action :authenticate_user!, except: [:get_links, :embed]
   def index
@@ -63,4 +64,9 @@ class PostsController < ApplicationController
     set_surrogate_key_header [@front_page.record_key, @posts.map(&:record_key)].flatten
     render layout: 'embed'
   end
+  private
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
+  end
+
 end
