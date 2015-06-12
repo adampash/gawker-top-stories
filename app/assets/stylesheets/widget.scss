@@ -1,8 +1,12 @@
 @import "base";
 @import "kinja_fonts";
+@import "breakpoint";
 
 $yellow: #ffc810;
 $black: #353535;
+
+$mobile: 500px;
+
 
 .container {
   font-family: ProximaNovaCond;
@@ -23,6 +27,9 @@ $black: #353535;
     }
   }
   .marquee {
+    @include breakpoint(max-width $mobile) {
+      display: none;
+    }
     cursor: pointer;
     display: flex;
     background: #EDEDED;
@@ -70,6 +77,11 @@ $black: #353535;
     }
   }
   .links {
+    @include breakpoint(max-width $mobile) {
+      flex-direction: column;
+      text-align: left;
+      padding: 0;
+    }
     cursor: pointer;
     text-align: center;
     display: flex;
@@ -85,26 +97,49 @@ $black: #353535;
     .hoverableLink {
       flex: 1 1 0;
       min-height: 110px;
+      img {
+        display: none;
+        @include breakpoint(max-width $mobile) {
+          display: inline-block;
+          flex: 1 0 0;
+          width: 100%;
+          height: 100%;
+          margin-right: 10px;
+        }
+      }
       .headline {
+        @include breakpoint(max-width $mobile) {
+          display: flex;
+          flex-direction: row;
+          padding: 5px;
+        }
         flex: 1 0 0;
         padding: 10px 15px 15px;
         h4 {
+          @include breakpoint(max-width $mobile) {
+            flex: 2 0 0;
+          }
           margin: 0;
           font-weight: normal;
           line-height: 19px;
         }
         &.active h4 {
           color: $yellow;
+          @include breakpoint(max-width $mobile) {
+            color: white;
+          }
         }
       }
       .dot {
         align-items: flex-start;
         flex: 1 0 0;
+        @include breakpoint(max-width $mobile) {
+          display: none;
+        }
       }
     }
   }
 }
-
 .dot {
   width: 12px;
   height: 12px;

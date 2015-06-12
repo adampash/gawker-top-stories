@@ -55,6 +55,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'breakpoint'
 gem 'puma'
 gem 'kinja'
 gem "font-awesome-rails"

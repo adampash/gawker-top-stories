@@ -14,6 +14,7 @@
       <a href={this.props.url} target="_blank">
         <div className={this.props.active ? 'active dot' : 'dot'} />
         <div className={this.props.active ? 'active headline' : 'headline'}>
+        <img src={this.props.img.src} />
 
           <h4
             dangerouslySetInnerHTML={{

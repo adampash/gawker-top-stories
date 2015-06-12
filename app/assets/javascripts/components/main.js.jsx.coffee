@@ -65,7 +65,7 @@
         key={story.id}
         id={story.id}
         url={story.permalink}
-        img={story.img}
+        img={story.image}
         active={_this.state.activeStoryId === story.id}
         index={index} />`
     return `<div className="container" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} >
