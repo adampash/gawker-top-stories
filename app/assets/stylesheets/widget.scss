@@ -110,6 +110,7 @@ $mobile: 500px;
       .headline {
         @include breakpoint(max-width $mobile) {
           display: flex;
+          align-items: center;
           flex-direction: row;
           padding: 5px;
         }
