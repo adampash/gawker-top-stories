@@ -8,6 +8,7 @@
   resize: ->
     # console.log 'RESIZE!!!'
     height = $('.container').height()
+    console.log height
     window.top.postMessage(
       JSON.stringify(
         kinja:

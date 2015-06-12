@@ -9,7 +9,8 @@ class PostsController < ApplicationController
     unless current_user.site == params[:site] or current_user.admin?
       redirect_to dashboard_path(current_user.site)
     end
-    post_ids = FrontPage.latest(params[:site]).get_links
+    @front_page = FrontPage.latest(params[:site])
+    post_ids = @front_page.nil? ? [nil, nil, nil] : @front_page.get_links
     @posts = post_ids.map do |post_id|
       if post_id.nil?
         nil
