@@ -8,8 +8,6 @@
 
   updateStories: (stories) ->
     @reload()
-    # @setState
-    #   stories: stories
 
   reload: ->
     $.ajax
