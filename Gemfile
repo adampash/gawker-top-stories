@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "fastly-rails"
+gem 'fog-aws', '<= 0.1.1', require: false
+gem "asset_sync"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
