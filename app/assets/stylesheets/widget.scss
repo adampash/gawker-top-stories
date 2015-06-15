@@ -1,6 +1,7 @@
 @import "base";
 @import "kinja_fonts";
 @import "breakpoint";
+@import "flexbox";
 
 $yellow: #ffc810;
 $black: #353535;
@@ -11,8 +12,10 @@ $mobile: 500px;
 .container {
   font-family: ProximaNovaCond;
   background: $black;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  @include flexbox;
+  @include flex-direction(column);
+  // flex-direction: column;
   max-width: 636px;
   .header {
     background: $black;
@@ -36,21 +39,26 @@ $mobile: 500px;
       display: none;
     }
     cursor: pointer;
-    display: flex;
+    // display: flex;
+    @include flexbox;
     background: #EDEDED;
-    flex-direction: row;
+    // flex-direction: row;
+    @include flex-direction(row);
     align-items: center;
     a {
       text-decoration: none;
       color: black;
     }
     .box {
-      flex: 1 0 0;
-      display: flex;
+      @include flex(1 0 0);
+      // flex: 1 0 0;
+      // display: flex;
+      @include flexbox;
       .text {
         text-align: center;
         padding: 10px 25px;
-        flex: 1 1 0;
+        @include flex(1 1 0);
+        // flex: 1 1 0;
         h2 {
           line-height: 1.2em;
           margin: 5px 0;
@@ -83,15 +91,18 @@ $mobile: 500px;
   }
   .links {
     @include breakpoint(max-width $mobile) {
-      flex-direction: column;
+      // flex-direction: column;
+      @include flex-direction(column);
       text-align: left;
       padding: 0;
     }
     cursor: pointer;
     text-align: center;
-    display: flex;
+    // display: flex;
+    @include flexbox;
     width: 100%;
-    flex-direction: row;
+    @include flex-direction(row);
+    // flex-direction: row;
     align-items: stretch;
     background: $black;
     padding: 0 10px;
@@ -100,15 +111,19 @@ $mobile: 500px;
       text-decoration: none;
     }
     .hoverableLink {
-      flex: 1 1 0;
+      // flex: 1 1 0;
+      @include flex(1 1 0);
       min-height: 110px;
       .headline {
         @include breakpoint(max-width $mobile) {
-          display: flex;
-          flex-direction: row;
+          // display: flex;
+          @include flexbox;
+          @include flex-direction(row);
+          // flex-direction: row;
           padding: 10px;
         }
-        flex: 1 0 0;
+        @include flex(1 0 0);
+        // flex: 1 0 0;
         padding: 10px 15px 15px;
         img {
           display: none;
@@ -124,7 +139,8 @@ $mobile: 500px;
         }
         h4 {
           @include breakpoint(max-width $mobile) {
-            flex: 2 0 0;
+            @include flex(2 0 0);
+            // flex: 2 0 0;
           }
           margin: 0;
           font-weight: normal;
@@ -138,8 +154,10 @@ $mobile: 500px;
         }
       }
       .dot {
-        align-items: flex-start;
-        flex: 1 0 0;
+        @include align-items(flex-start);
+        // align-items: flex-start;
+        @include flex(1 0 0);
+        // flex: 1 0 0;
         @include breakpoint(max-width $mobile) {
           display: none;
         }
