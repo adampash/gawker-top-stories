@@ -12,10 +12,8 @@ $mobile: 500px;
 .container {
   font-family: ProximaNovaCond;
   background: $black;
-  // display: flex;
   @include flexbox;
   @include flex-direction(column);
-  // flex-direction: column;
   max-width: 636px;
   .header {
     background: $black;
