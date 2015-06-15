@@ -42,7 +42,7 @@ $mobile: 500px;
     background: #EDEDED;
     // flex-direction: row;
     @include flex-direction(row);
-    align-items: center;
+    @include align-items(center);
     a {
       text-decoration: none;
       color: black;
