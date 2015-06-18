@@ -3,11 +3,40 @@
 @import "breakpoint";
 @import "flexbox";
 
-$yellow: #ffc810;
+$kotaku: #ffc810;
+$gawker: #e85e57;
 $black: #353535;
 
 $mobile: 500px;
 
+.kotaku {
+  a {
+    color: $kotaku;
+  }
+  .active h4 {
+    color: $kotaku;
+  }
+  .dot {
+    border: 2px solid $kotaku;
+    &.active {
+      background: $kotaku;
+    }
+  }
+}
+.gawker {
+  a {
+    color: $gawker;
+  }
+  .active h4 {
+    color: $gawker;
+  }
+  .dot {
+    border: 2px solid $gawker;
+    &.active {
+      background: $gawker;
+    }
+  }
+}
 
 .container {
   font-family: ProximaNovaCond;
@@ -22,12 +51,11 @@ $mobile: 500px;
         margin: 0;
         padding: 10px;
       }
-      margin: 8px 14px 5px;
+      margin: 9px 14px 5px;
       font-weight: normal;
       letter-spacing: 1.5px;
     }
     a {
-      color: $yellow;
       text-decoration: none;
       text-transform: uppercase;
     }
@@ -145,7 +173,6 @@ $mobile: 500px;
           line-height: 19px;
         }
         &.active h4 {
-          color: $yellow;
           @include breakpoint(max-width $mobile) {
             color: white;
           }
@@ -168,10 +195,6 @@ $mobile: 500px;
   height: 12px;
   margin: 14px auto 1px;
   border-radius: 6px;
-  border: 2px solid $yellow;
-  &.active {
-    background: $yellow;
-  }
 }
 
 .hide {
