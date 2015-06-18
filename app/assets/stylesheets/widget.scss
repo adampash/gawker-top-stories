@@ -38,6 +38,10 @@ $mobile: 500px;
   }
 }
 
+html {
+  overflow: hidden;
+}
+
 .container {
   font-family: ProximaNovaCond;
   background: $black;
