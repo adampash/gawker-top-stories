@@ -4,7 +4,16 @@
       stories = @props.stories
     else
       stories = [0,1,2]
-    return stories: stories
+    state =
+      stories: stories
+      title: @getTitle(@props.title)
+
+  getTitle: (title) ->
+    if title? and title != ""
+      title = title
+    else
+      title = "#{@props.site} Top Stories"
+
 
   updateStories: (stories) ->
     @reload()
@@ -16,22 +25,24 @@
       dataType: 'json'
       data:
         site: @props.site
-      success: (stories) =>
+      success: (data) =>
         @setState
           stories: []
         @setState
-          stories: stories
+          stories: data.stories
+          title: @getTitle(data.title)
 
   render: ->
     `<div>
       <Builder posts={this.state.stories}
         handleUpdate={this.updateStories}
         site={this.props.site}
+        title={this.state.title}
       />
       <div className="preview">
         <div className="center">
           <h2>Preview</h2>
-          <Main stories={this.state.stories} />
+          <Main stories={this.state.stories} title={this.state.title} />
         </div>
       </div>
     </div>`

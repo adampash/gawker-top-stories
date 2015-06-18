@@ -5,6 +5,12 @@
     activeStory: 0
     hovering: false
 
+  getTitle: (title) ->
+    if title? and title != ""
+      title = title
+    else
+      title = "#{@props.site} Top Stories"
+
   resize: ->
     height = $('.container').height()
     window.top.postMessage(
@@ -78,7 +84,7 @@
         active={_this.state.activeStoryId === story.id}
         index={index} />`
     return `<div className="container" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} >
-            <Header text="Kotaku Covers E3" url="http://kotaku.com/tag/e3" />
+            <Header text={this.getTitle(this.props.title)} />
             <Marquee
               story={this.props.stories[this.state.activeStory]}
               img={this.getImage(this.state.activeStory)}

@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "flexbox";
+
 .posts {
   margin-top: 50px;
   width: 100%;
@@ -187,4 +189,23 @@ a {
 .clear {
   clear: both;
   margin: 10px 0;
+}
+
+.title {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(stretch);
+  margin: 10px 0;
+  label {
+    width: auto;
+    padding: 10px;
+    font-size: 18px;
+  }
+  input {
+    @include flex(1 0 0);
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 18px;
+    max-width: 500px;
+  }
 }

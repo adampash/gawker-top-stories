@@ -7,7 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class=<%= params[:site] %>>
     <%= yield %>
   </body>
 </html>

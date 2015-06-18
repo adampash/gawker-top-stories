@@ -37,6 +37,7 @@ class PostsController < ApplicationController
       third: params[:third],
       site: params[:site],
       user_id: current_user.id,
+      title: params[:title],
     )
     @old_front.purge
     render json: {success: true}

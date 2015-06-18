@@ -3,9 +3,8 @@
   render: ->
     `<div className="header">
       <h4>
-        <a href={this.props.url} target="_blank"
+        <div
           dangerouslySetInnerHTML={{__html: this.props.text}}
-        >
-        </a>
+        />
       </h4>
     </div>`

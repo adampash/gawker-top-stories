@@ -4,6 +4,7 @@
     message: ''
     order: [0,1,2]
     posts: @props.posts
+    title: @props.title
   getDefaultProps: ->
     posts: [null, null, null]
   componentDidMount: ->
@@ -16,6 +17,11 @@
           changed: true
           order: order
       items: "> div.post"
+
+  handleTitleChange: (e) ->
+    @setState
+      changed: true
+      title: e.target.value
 
   handleChange: (newPost, oldPost) ->
     posts = @state.posts
@@ -41,6 +47,7 @@
       second: ids[order[1]]
       third: ids[order[2]]
       site: @props.site
+      title: @state.title
     $.ajax
       method: "POST"
       dataType: 'json'
@@ -81,6 +88,14 @@
         handleUpdate={this.props.handleUpdate}
         />`
     return `<div className="posts">
+        <div className="title">
+          <label>Header:</label>
+          <input
+            type="text"
+            defaultValue={this.props.title}
+            onChange={this.handleTitleChange}
+          />
+        </div>
         <h4>Click to change stories. Drag and drop to reorder.</h4>
         {posts}
 

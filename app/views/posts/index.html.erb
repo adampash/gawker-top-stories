@@ -2,7 +2,8 @@
   'App',
   {
     stories: @posts,
-    site: params[:site]
+    site: params[:site],
+    title: @front_page.title,
   },
   {prerender: false}
 ) %>

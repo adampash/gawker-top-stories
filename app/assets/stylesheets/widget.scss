@@ -10,7 +10,7 @@ $black: #353535;
 $mobile: 500px;
 
 .kotaku {
-  a {
+  .header h4 {
     color: $kotaku;
   }
   .active h4 {
@@ -24,7 +24,7 @@ $mobile: 500px;
   }
 }
 .gawker {
-  a {
+  .header h4 {
     color: $gawker;
   }
   .active h4 {
@@ -54,8 +54,6 @@ $mobile: 500px;
       margin: 9px 14px 5px;
       font-weight: normal;
       letter-spacing: 1.5px;
-    }
-    a {
       text-decoration: none;
       text-transform: uppercase;
     }
