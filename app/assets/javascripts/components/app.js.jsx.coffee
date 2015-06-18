@@ -14,9 +14,6 @@
     else
       title = "#{@props.site} Top Stories"
 
-  compenentDidMount: ->
-    $('html').css('overflow', 'auto')
-
   updateStories: (stories) ->
     @reload()
 
