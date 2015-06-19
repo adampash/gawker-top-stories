@@ -1,0 +1,28 @@
+@mixin site_color($site, $color, $alt: 'none') {
+  .#{$site} {
+    .active {
+      .site_color {
+        color: $color !important;
+      }
+    }
+    h4.tag {
+      @if $alt == 'none' {
+        color: $color !important;
+      }
+      @else {
+        color: $alt !important;
+      }
+    }
+    .mark {
+      background: $color;
+    }
+  }
+
+}
+
+$kotaku: #ffc810;
+$gawker: #e85e57;
+$alt: #111;
+
+@include site_color(kotaku, $kotaku, $alt);
+@include site_color(gawker, $gawker);

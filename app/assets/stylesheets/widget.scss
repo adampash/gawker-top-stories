@@ -2,41 +2,11 @@
 @import "kinja_fonts";
 @import "breakpoint";
 @import "flexbox";
+@import "site_styles";
 
-$kotaku: #ffc810;
-$gawker: #e85e57;
-$black: #353535;
+$black: #000;
 
 $mobile: 500px;
-
-.kotaku {
-  .header h4 {
-    color: $kotaku;
-  }
-  .active h4 {
-    color: $kotaku;
-  }
-  .dot {
-    border: 2px solid $kotaku;
-    &.active {
-      background: $kotaku;
-    }
-  }
-}
-.gawker {
-  .header h4 {
-    color: $gawker;
-  }
-  .active h4 {
-    color: $gawker;
-  }
-  .dot {
-    border: 2px solid $gawker;
-    &.active {
-      background: $gawker;
-    }
-  }
-}
 
 html {
   overflow: hidden;
@@ -50,16 +20,19 @@ html {
   max-width: 636px;
   .header {
     background: $black;
+    height: 40px;
     h4 {
       @include breakpoint(max-width $mobile) {
         margin: 0;
         padding: 10px;
       }
-      margin: 9px 14px 5px;
+      color: white;
+      padding: 11px 14px;
       font-weight: normal;
       letter-spacing: 1.5px;
       text-decoration: none;
       text-transform: uppercase;
+      font-size: 18px;
     }
   }
   .marquee {
@@ -72,7 +45,7 @@ html {
     background: #EDEDED;
     // flex-direction: row;
     @include flex-direction(row);
-    @include align-items(center);
+    @include align-items(flex-start);
     a {
       text-decoration: none;
       color: black;
@@ -83,8 +56,8 @@ html {
       // display: flex;
       @include flexbox;
       .text {
-        text-align: center;
-        padding: 10px 25px;
+        text-align: left;
+        padding: 25px;
         @include flex(1 1 0);
         // flex: 1 1 0;
         h2 {
@@ -105,19 +78,20 @@ html {
       .deck {
         font-family: Georgia;
         color: black;
-        padding: 5px;
-        line-height: 25px;
+        padding: 5px 0;
+        line-height: 26px;
         font-size: 17px;
         hr {
-          border-bottom: 2px solid black;
+          border-bottom: 1.5px solid black;
           border-style: solid;
-          width: 20px;
-          margin: 0 auto 15px;
+          width: 25%;
+          margin: 5px 0 15px;
         }
       }
     }
   }
   .links {
+    min-height: 126px;
     @include breakpoint(max-width $mobile) {
       // flex-direction: column;
       @include flex-direction(column);
@@ -125,7 +99,7 @@ html {
       padding: 0;
     }
     cursor: pointer;
-    text-align: center;
+    text-align: left;
     // display: flex;
     @include flexbox;
     width: 100%;
@@ -133,7 +107,7 @@ html {
     // flex-direction: row;
     align-items: stretch;
     background: $black;
-    padding: 0 10px;
+    padding: 15px 0 0;
     a {
       color: white;
       text-decoration: none;
@@ -142,6 +116,7 @@ html {
       // flex: 1 1 0;
       @include flex(1 1 0);
       min-height: 110px;
+      font-size: 16px;
       .headline {
         @include breakpoint(max-width $mobile) {
           // display: flex;
@@ -153,6 +128,10 @@ html {
         @include flex(1 0 0);
         // flex: 1 0 0;
         padding: 10px 15px 15px;
+      .tag {
+        text-transform: uppercase;
+        color: #ccc;
+      }
         img {
           display: none;
           @include breakpoint(max-width $mobile) {
@@ -201,4 +180,22 @@ html {
 
 .hide {
   display: none;
+}
+
+.marker {
+  height: 6px;
+  .mark {
+    height: 6px;
+    width: 33.333333333%;
+    transition: all 0.5s;
+    &.zero {
+      margin-left: 0;
+    }
+    &.one {
+      margin-left: 33.333333%;
+    }
+    &.two {
+      margin-left: 66.6666667%;
+    }
+  }
 }

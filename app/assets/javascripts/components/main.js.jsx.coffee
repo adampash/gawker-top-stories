@@ -77,6 +77,7 @@
       `<Hoverable
         hoverCallback={_this.hoverCallback}
         headline={story.headline}
+        story={story}
         key={story.id}
         id={story.id}
         url={story.permalink}
@@ -89,6 +90,7 @@
               story={this.props.stories[this.state.activeStory]}
               img={this.getImage(this.state.activeStory)}
             />
+            <Marker position={this.state.activeStory} />
             <div className="links">
               {links}
             </div>
