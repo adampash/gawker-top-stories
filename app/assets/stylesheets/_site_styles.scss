@@ -1,4 +1,4 @@
-@mixin site_color($site, $color, $alt: 'none') {
+@mixin site_color($site, $color, $color-light, $alt: 'none') {
   .#{$site} {
     .active {
       .site_color {
@@ -16,13 +16,43 @@
     .mark {
       background: $color;
     }
+    .marker {
+      background: $color-light;
+    }
   }
 
 }
 
-$kotaku: #ffc810;
-$gawker: #e85e57;
-$alt: #111;
+$deadspin: #309d92;
+$deadspin-light: #a1dbd2;
 
-@include site_color(kotaku, $kotaku, $alt);
-@include site_color(gawker, $gawker);
+$gawker: #d44d46;
+$gawker-light: #d8a3a3;
+
+$gizmodo: #2aafe4;
+$gizmodo-light: #a8d4e2;
+
+$io9: #c14e9d;
+$io9-light: #dda2cd;
+
+$jalopnik: #ff4d00;
+$jalopnik-light: #efa084;
+
+$jezebel: #ec1239;
+$jezebel-light: #f98fa6;
+
+$kotaku: #fbbe23;
+$kotaku-light: #f7e0b2;
+$kotaku-alt: #b12560;
+
+$lifehacker: #709416;
+$lifehacker-light: #bbce82;
+
+@include site_color(deadspin, $deadspin, $deadspin-light);
+@include site_color(gawker, $gawker, $gawker-light);
+@include site_color(gizmodo, $gizmodo, $gizmodo-light);
+@include site_color(io9, $io9, $io9-light);
+@include site_color(jalopnik, $jalopnik, $jalopnik-light);
+@include site_color(jezebel, $jezebel, $jezebel-light);
+@include site_color(kotaku, $kotaku, $kotaku-light, $kotaku-alt);
+@include site_color(lifehacker, $lifehacker, $lifehacker-light);

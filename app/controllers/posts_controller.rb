@@ -39,7 +39,7 @@ class PostsController < ApplicationController
       user_id: current_user.id,
       title: params[:title],
     )
-    @old_front.purge
+    @old_front.purge unless @old_front.nil?
     render json: {success: true}
   end
 

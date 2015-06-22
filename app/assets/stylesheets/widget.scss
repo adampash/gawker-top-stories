@@ -42,7 +42,7 @@ html {
     cursor: pointer;
     // display: flex;
     @include flexbox;
-    background: #EDEDED;
+    background: #f4f4f4;
     // flex-direction: row;
     @include flex-direction(row);
     @include align-items(flex-start);
