@@ -13,6 +13,7 @@
 
   mobileImage: ->
     img_obj = @props.stories?[0]?.image
+    return unless img_obj?
     transform = "c_fill,fl_progressive,g_north,h_358,q_80,w_636"
     img_url = "http://i.kinja-img.com/gawker-media/image/upload"
     "#{img_url}/#{transform}/#{img_obj.id}.#{img_obj.format}"
