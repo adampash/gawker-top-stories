@@ -6,7 +6,7 @@
 
 $black: #000;
 
-$mobile: 500px;
+$mobile: max-width 500px;
 
 html {
   overflow: hidden;
@@ -22,23 +22,30 @@ html {
     background: $black;
     height: 40px;
     h4 {
-      @include breakpoint(max-width $mobile) {
+      @include breakpoint($mobile) {
         margin: 0;
-        padding: 10px;
+        padding: 12px;
+        text-align: center;
       }
       color: white;
-      padding: 11px 14px;
+      padding: 12px;
       font-weight: normal;
       letter-spacing: 1.5px;
       text-decoration: none;
       text-transform: uppercase;
-      font-size: 18px;
+      font-size: 19px;
+      line-height: 19px;
+    }
+  }
+  .mobile_image {
+    display: none;
+    max-width: 100%;
+    min-height: 180px;
+    @include breakpoint($mobile) {
+      display: block;
     }
   }
   .marquee {
-    @include breakpoint(max-width $mobile) {
-      display: none;
-    }
     cursor: pointer;
     // display: flex;
     @include flexbox;
@@ -46,6 +53,9 @@ html {
     // flex-direction: row;
     @include flex-direction(row);
     @include align-items(flex-start);
+    @include breakpoint($mobile) {
+      display: none;
+    }
     a {
       text-decoration: none;
       color: black;
@@ -57,18 +67,21 @@ html {
       @include flexbox;
       .text {
         text-align: left;
-        padding: 25px;
+        padding: 24px;
         @include flex(1 1 0);
         // flex: 1 1 0;
         h2 {
           line-height: 1.2em;
-          margin: 5px 0;
+          margin: 5px 0 22px;
+          font-size: 25px;
+          line-height: 26px;
         }
         h4.tag {
-          margin: 0;
           text-transform: uppercase;
           color: #A6A6A6;
-          font-weight: normal;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 16px;
         }
       }
       img {
@@ -79,21 +92,19 @@ html {
         font-family: Georgia;
         color: black;
         padding: 5px 0;
-        line-height: 26px;
-        font-size: 17px;
+        line-height: 24px;
+        font-size: 18px;
         hr {
           border-bottom: 1.5px solid black;
           border-style: solid;
           width: 25%;
-          margin: 5px 0 15px;
+          margin: 0 0 24px;
         }
       }
     }
   }
   .links {
-    min-height: 126px;
-    @include breakpoint(max-width $mobile) {
-      // flex-direction: column;
+    @include breakpoint($mobile) {
       @include flex-direction(column);
       text-align: left;
       padding: 0;
@@ -107,7 +118,7 @@ html {
     // flex-direction: row;
     align-items: stretch;
     background: $black;
-    padding: 15px 0 0;
+    padding: 28px 0;
     a {
       color: white;
       text-decoration: none;
@@ -115,46 +126,45 @@ html {
     .hoverableLink {
       // flex: 1 1 0;
       @include flex(1 1 0);
-      min-height: 110px;
       font-size: 16px;
+      line-height: 19px;
+      padding: 0 12px;
+      @include breakpoint($mobile) {
+        @include flex(1 0 auto);
+        border-bottom: 1px solid white;
+      }
       .headline {
-        @include breakpoint(max-width $mobile) {
-          // display: flex;
-          @include flexbox;
-          @include flex-direction(row);
-          // flex-direction: row;
+        @include breakpoint($mobile) {
           padding: 10px;
+          text-align: center;
+          padding: 24px;
         }
-        @include flex(1 0 0);
+        @include flex(1 1 0);
         // flex: 1 0 0;
-        padding: 10px 15px 15px;
       .tag {
         text-transform: uppercase;
-        color: #ccc;
+        @include breakpoint($mobile) {
+          display: none;
+        }
       }
         img {
           display: none;
-          @include breakpoint(max-width $mobile) {
-            display: inline;
-            float: left;
-            width: 140px;
-            // width: 100%;
-            // width: 100px;
-            height: 100%;
-            margin-right: 10px;
+          @include breakpoint($mobile) {
+            display: none;
           }
         }
         h4 {
-          @include breakpoint(max-width $mobile) {
+          @include breakpoint($mobile) {
             @include flex(2 0 0);
-            // flex: 2 0 0;
+            font-size: 21px;
+            line-height: 25px;
           }
           margin: 0;
           font-weight: normal;
           line-height: 19px;
         }
         &.active h4 {
-          @include breakpoint(max-width $mobile) {
+          @include breakpoint($mobile) {
             color: white;
           }
         }
@@ -164,7 +174,7 @@ html {
         // align-items: flex-start;
         @include flex(1 0 0);
         // flex: 1 0 0;
-        @include breakpoint(max-width $mobile) {
+        @include breakpoint($mobile) {
           display: none;
         }
       }
@@ -184,6 +194,9 @@ html {
 
 .marker {
   height: 6px;
+  @include breakpoint($mobile) {
+    display: none;
+  }
   .mark {
     height: 6px;
     width: 33.333333333%;

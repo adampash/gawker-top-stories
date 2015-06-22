@@ -1,8 +1,17 @@
+@import "breakpoint";
+
+$mobile: max-width 500px;
+
 @mixin site_color($site, $color, $color-light, $alt: 'none') {
   .#{$site} {
-    .active {
-      .site_color {
-        color: $color !important;
+    .headline {
+      .tag {
+        color: $color-light;
+      }
+      &.active {
+        .site_color {
+          color: $color !important;
+        }
       }
     }
     h4.tag {
@@ -19,33 +28,45 @@
     .marker {
       background: $color-light;
     }
+    @include breakpoint($mobile) {
+      .container {
+        .header {
+          @if $alt == 'none' {
+            background: $color;
+          }
+          @else {
+            background: $alt;
+          }
+        }
+      }
+    }
   }
 
 }
 
-$deadspin: #309d92;
+$deadspin: #2d9d92;
 $deadspin-light: #a1dbd2;
 
-$gawker: #d44d46;
+$gawker: #e25a48;
 $gawker-light: #d8a3a3;
 
-$gizmodo: #2aafe4;
+$gizmodo: #28ade6;
 $gizmodo-light: #a8d4e2;
 
-$io9: #c14e9d;
+$io9: #c34b9e;
 $io9-light: #dda2cd;
 
 $jalopnik: #ff4d00;
 $jalopnik-light: #efa084;
 
-$jezebel: #ec1239;
+$jezebel: #e21638;
 $jezebel-light: #f98fa6;
 
 $kotaku: #fbbe23;
 $kotaku-light: #f7e0b2;
-$kotaku-alt: #b12560;
+$kotaku-alt: #b22460;
 
-$lifehacker: #709416;
+$lifehacker: #709602;
 $lifehacker-light: #bbce82;
 
 @include site_color(deadspin, $deadspin, $deadspin-light);

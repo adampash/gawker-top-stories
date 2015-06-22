@@ -11,6 +11,12 @@
     else
       title = "#{@props.site} Top Stories"
 
+  mobileImage: ->
+    img_obj = @props.stories?[0]?.image
+    transform = "c_fill,fl_progressive,g_north,h_358,q_80,w_636"
+    img_url = "http://i.kinja-img.com/gawker-media/image/upload"
+    "#{img_url}/#{transform}/#{img_obj.id}.#{img_obj.format}"
+
   resize: ->
     height = $('.container').height()
     window.top.postMessage(
@@ -89,6 +95,7 @@
             <Marquee
               story={this.props.stories[this.state.activeStory]}
               img={this.getImage(this.state.activeStory)}
+              mobile={this.mobileImage()}
             />
             <Marker position={this.state.activeStory} />
             <div className="links">
