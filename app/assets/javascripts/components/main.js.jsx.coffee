@@ -33,7 +33,6 @@
     img = new Image()
     img.onload = =>
       return false if index is 2
-      console.log 'load next'
       @preloadImage(index + 1)
     img.src = @getImage(index)
 
