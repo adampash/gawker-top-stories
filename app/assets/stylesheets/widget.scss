@@ -40,7 +40,6 @@ html {
   .mobile_image {
     display: none;
     max-width: 100%;
-    min-height: 180px;
     @include breakpoint($mobile) {
       display: block;
     }
