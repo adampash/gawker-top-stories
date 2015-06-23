@@ -21,12 +21,15 @@ html {
   .header {
     background: $black;
     height: 40px;
+    @include breakpoint($mobile) {
+      min-height: 40px;
+      height: auto;
+    }
     h4 {
       @include breakpoint($mobile) {
         margin: 0;
         padding: 12px;
         text-align: center;
-        min-height: 40px;
       }
       color: white;
       padding: 12px;
