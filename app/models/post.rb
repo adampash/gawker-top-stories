@@ -1,3 +1,5 @@
+require 'post_fetcher'
+
 class Post < ActiveRecord::Base
   def self.find_or_create(params)
     # require 'pry'; binding.pry
@@ -13,5 +15,14 @@ class Post < ActiveRecord::Base
       )
     end
     post
+  end
+
+  def refresh
+    post = PostFetcher.get_post(permalink)
+    update_attributes(
+      tags: post["tags"],
+      image: post["leftOfHeadline"],
+      headline: post["headline"],
+    )
   end
 end
