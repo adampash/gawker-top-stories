@@ -3,6 +3,7 @@
 @import "breakpoint";
 @import "flexbox";
 @import "site_styles";
+@import "font_smoothing";
 
 $black: #000;
 
@@ -10,6 +11,10 @@ $mobile: max-width 500px;
 
 html {
   overflow: hidden;
+}
+
+body {
+  // @include font-smoothing;
 }
 
 .container {
