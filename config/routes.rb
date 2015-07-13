@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'posts/index'
-  get ':site/embed' => 'posts#embed'
+  get '(:site)/embed' => 'posts#embed', :constraints => {:site => /[0-9A-Za-z\-\.]+/}
 
   get 'links/:site' => 'posts#get_links'
   get 'posts' => 'posts#show'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root 'pages#welcome'
   get 'logout' => 'users#logout', as: :user_logout
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  get ':site' => 'posts#index', as: :dashboard
+  get '(:site)' => 'posts#index', :constraints => {:site => /[0-9A-Za-z\-\.]+/}, as: :dashboard
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

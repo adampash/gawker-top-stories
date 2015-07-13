@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
   end
 
   def site
-    email.match(/@(\w+)\.com/)[1]
+    alt_domain || email.match(/@(\w+)\.com/)[1]
   end
 
   def domain
-    email.match(/@(\w+\.com)/)[1]
+    alt_domain || email.match(/@(\w+\.com)/)[1]
   end
 
   def owns_this_site(site)
