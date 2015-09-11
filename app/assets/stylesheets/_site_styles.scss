@@ -45,29 +45,29 @@ $mobile: max-width 500px;
 }
 
 $deadspin: #2d9d92;
-$deadspin-light: #a1dbd2;
+$deadspin-light: #b3f4ec;
 
 $gawker: #e25a48;
 $gawker-light: #fcc9c8;
 
 $gizmodo: #28ade6;
-$gizmodo-light: #a8d4e2;
+$gizmodo-light: #b4e9fc;
 
 $io9: #c34b9e;
-$io9-light: #dda2cd;
+$io9-light: #f9c2eb;
 
 $jalopnik: #ff4d00;
-$jalopnik-light: #efa084;
+$jalopnik-light: #ffd0c5;
 
 $jezebel: #e21638;
-$jezebel-light: #e2b7c3;
+$jezebel-light: #fcc5d1;
 
 $kotaku: #fbbe23;
-$kotaku-light: #f7e0b2;
+$kotaku-light: #fffab6;
 $kotaku-alt: #b22460;
 
 $lifehacker: #709602;
-$lifehacker-light: #c5d199;
+$lifehacker-light: #e9fca7;
 
 @include site_color(deadspin, $deadspin, $deadspin-light);
 @include site_color(gawker, $gawker, $gawker-light);
