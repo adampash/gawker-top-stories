@@ -186,10 +186,12 @@ body {
           }
         }
         h4 {
+          color: white;
           @include breakpoint($mobile) {
             @include flex(2 0 0);
             font-size: 21px;
             line-height: 25px;
+            color: $black;
           }
           margin: 0;
           font-weight: bold;
